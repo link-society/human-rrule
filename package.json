@@ -1,0 +1,25 @@
+{
+  "name": "human-rrule",
+  "version": "1.0.0",
+  "description": "Parse Human Readable RRule",
+  "main": "src/index.js",
+  "repository": "https://github.com/link-society/human-rrule",
+  "author": "Link Society <contact@link-society.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src/",
+    "test": "c8 -n src -r html -r text mocha tests/*.spec.js tests/**/*.spec.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/eslint-plugin": "^7.12.1",
+    "c8": "^7.3.5",
+    "eslint": "^7.14.0",
+    "mocha": "^8.2.1"
+  },
+  "dependencies": {
+    "junify": "^1.0.2",
+    "rrule": "^2.6.6"
+  }
+}
