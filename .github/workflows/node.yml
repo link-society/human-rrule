@@ -1,0 +1,52 @@
+---
+name: Test build and publish Node packages
+
+on:
+  - push
+
+jobs:
+  human-rrule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout@scm
+        uses: actions/checkout@master
+
+      - name: setup@node
+        uses: actions/setup-node@master
+        with:
+          node-version: '14.x'
+          always-auth: true
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@link-society'
+
+      - name: setup@yarn
+        run: npm install -g yarn
+
+      - name: install@yarn
+        run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
+
+      - name: lint@yarn
+        run: yarn run lint
+
+      - name: test@yarn
+        run: yarn run test
+
+      - name: publish@yarn
+        if: github.ref == 'refs/heads/main'
+        run: /bin/sh .github/scripts/maybe-publish.sh
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PUBLIC_NPM_AUTH_TOKEN }}
+
+      - name: notify@slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          username: CIBot
+          fields: repo,message,commit,author,ref,took,job
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()

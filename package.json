@@ -1,5 +1,6 @@
 {
-  "name": "human-rrule",
+  "name": "@link-society/human-rrule",
+  "private": false,
   "version": "1.0.0",
   "description": "Parse Human Readable RRule",
   "main": "src/index.js",
