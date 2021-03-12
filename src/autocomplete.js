@@ -25,11 +25,32 @@ const getSuggestions = (exp, suggestions) => {
 const freq = 'every\\s+\\d+?'
 const freqs = ['every ']
 
-const day = 'monday|tuesday|wednesday|thursday|friday|saturday|sunday'
-const days = day.split('|')
+const days = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday'
+]
+const day = days.join('|')
 
-const month = 'january|february|mars|april|may|june|july|august|september|october|november|december'
-const months = month.split('|')
+const months = [
+  'january',
+  'february',
+  'mars',
+  'april',
+  'may',
+  'june',
+  'july',
+  'august',
+  'september',
+  'october',
+  'november',
+  'december'
+]
+const month = months.join('|')
 
 const weekStart = `starting +the +week +on +${day}`
 const weekStarts = days.map(
