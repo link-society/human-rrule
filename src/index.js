@@ -1,6 +1,7 @@
 const { tokenize } = require('./parser')
 const { rrule } = require('./grammar')
 const { visitRRule } = require('./visit')
+const { autocomplete } = require('./autocomplete')
 
 const parseHumanRRule = rrulestr => {
   const tokens = tokenize(rrulestr)
@@ -14,5 +15,6 @@ const parseHumanRRule = rrulestr => {
 }
 
 module.exports = {
-  parseHumanRRule
+  parseHumanRRule,
+  autocomplete
 }
