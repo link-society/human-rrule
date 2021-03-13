@@ -171,19 +171,18 @@ const prefixes = {
 }
 
 const autocomplete = exp => {
-  const result = []
   const match = exp.match(re)
   if (match) {
     const { groups } = match
-    Object.entries(prefixes).forEach(
-      ([groupName, suggestions]) => {
-        if (!groups[groupName]) {
-          result.push(...getSuggestions(exp, suggestions))
-        }
-      }
-    )
+    return Object.entries(prefixes)
+      .filter(
+        ([groupName]) => !groups[groupName]
+      )
+      .flatMap(
+        ([, suggestions]) => getSuggestions(exp, suggestions)
+      )
   }
-  return result
+  return []
 }
 
 module.exports = {
