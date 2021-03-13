@@ -3,12 +3,12 @@ const assert = require('assert')
 const { makePrefixes, getSuggestions, autocomplete } = require('../src/autocomplete')
 
 describe('makePrefixes', () => {
-  it('should error on empty param', () => {
+  it('should throw an error on empty param', () => {
     assert.throws(() => makePrefixes())
   })
 
-  it('should convert empty string', () => {
-    assert.strictEqual(makePrefixes(''), '')
+  it('should throw an error on empty string', () => {
+    assert.throws(() => makePrefixes(''))
   })
 
   it('should process simple word', () => {
@@ -17,5 +17,11 @@ describe('makePrefixes', () => {
 
   it('should process spaces word', () => {
     assert.strictEqual(makePrefixes('az er'), 'a(?:z(?:\\s+(?:e(?:r)?)?)?)?')
+  })
+})
+
+describe('getSuggestions', () => {
+  it('should throw an error on empty param', () => {
+    assert.throws(() => getSuggestions())
   })
 })
