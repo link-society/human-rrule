@@ -15,6 +15,7 @@ const getSuggestions = (exp, suggestions) => {
   const digitsMatch = exp.match(/\d+/u)
   const digits = digitsMatch ? digitsMatch[0] : ''
   const rePrefixes = suggestions.map(regexPrefixes)
+
   return suggestions.filter(
     (_suggestion, index) => exp.match(rePrefixes[index])
   ).map(
@@ -147,7 +148,7 @@ const byTimes = times.flatMap(
 const until = `until +month +\\d+ +, +\\d{4} +(at +${time})?`
 const untils = [
   'until month \\d+, \\d+',
-  ...times.flatMap(
+  ...times.map(
     timeValue => `until month \\d+, \\d+ at ${timeValue}`
   )
 ]
