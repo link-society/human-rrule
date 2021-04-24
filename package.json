@@ -9,18 +9,22 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint src/",
-    "test": "c8 -n src -r html -r text mocha tests/*.spec.js tests/**/*.spec.js"
+    "test": "tsc && c8 -n src -r html -r text mocha tests/*.spec.js tests/**/*.spec.js"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@babel/eslint-parser": "^7.12.1",
     "@babel/eslint-plugin": "^7.12.1",
+    "@types/node": "^14.14.35",
     "c8": "^7.3.5",
     "eslint": "^7.14.0",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "typescript": "^4.2.3"
   },
   "dependencies": {
+    "@types/pluralize": "^0.0.29",
     "junify": "^1.0.2",
+    "pluralize": "^8.0.0",
     "rrule": "^2.6.6"
   }
 }

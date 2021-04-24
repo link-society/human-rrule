@@ -1,7 +1,7 @@
 const { tokenize } = require('./parser')
 const { rrule } = require('./grammar')
 const { visitRRule } = require('./visit')
-const { autocomplete } = require('./autocomplete')
+const { autocomplete } = require('../dist/autocomplete.js')
 
 const parseHumanRRule = rrulestr => {
   const tokens = tokenize(rrulestr)
