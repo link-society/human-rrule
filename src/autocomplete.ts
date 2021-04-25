@@ -35,10 +35,6 @@ const incCount = (count: number, suggestResults: readonly SuggestResult[]) => su
 )
 
 export const same = (name: string): Suggestor => {
-  if (!name) {
-    throw new Error('Missing token')
-  }
-
   return (...exps: string[]): readonly SuggestResult[] => {
     const [exp] = exps
 
@@ -95,27 +91,23 @@ export const digits = (maxValue?: number, suffix?: string): Suggestor =>
 
     const { digits, expSuffix } = matched.groups
 
-    if (digits) {
-      const value = parseInt(digits, 10)
+    const value = parseInt(digits, 10)
 
-      if (isNaN(value)) {
-        return errorResult(`Digits %d${suffix} expected. Found ${exp}`)
-      }
-      else if (maxValue && value > maxValue) {
-        return errorResult(`Too big number found ${value}. Expected lower than ${maxValue}`)
-      }
-
-      if (suffix) {
-        return same(suffix)(expSuffix)
-      }
-      else if (expSuffix) {
-        return errorResult(`No suffix expected. ${expSuffix} found`)
-      }
-
-      return countResult(1)
+    if (isNaN(value)) {
+      return errorResult(`Digits %d${suffix} expected. Found ${exp}`)
+    }
+    else if (maxValue && value > maxValue) {
+      return errorResult(`Too big number found ${value}. Expected lower than ${maxValue}`)
     }
 
-    return errorResult(`Digits %d${suffix} expected. Found ${exp}`)
+    if (suffix) {
+      return same(suffix)(expSuffix)
+    }
+    else if (expSuffix) {
+      return errorResult(`No suffix expected. ${expSuffix} found`)
+    }
+
+    return countResult(1)
   }
 
 export const seq = (...tokens: readonly Token[]): Suggestor =>

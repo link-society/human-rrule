@@ -1,12 +1,8 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-const { plural, seq, opt, autocomplete } = require('../../dist/autocomplete')
+import { plural, seq, opt, autocomplete } from '../../src/autocomplete'
 
 describe('autocomplete', () => {
-  it('should raise an error without params', () => {
-    assert.throws(() => autocomplete())
-  })
-
   it('should suggest only suggestions', () => {
     assert.deepStrictEqual(
       ['st', 'sts'],
