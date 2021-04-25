@@ -1,6 +1,9 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { plural, seq, opt, autocomplete } from '../../src/autocomplete'
+import plural from '../../src/autocomplete/plural'
+import seq from '../../src/autocomplete/seq'
+import opt from '../../src/autocomplete/opt'
+import autocomplete from '../../src/autocomplete'
 
 describe('autocomplete', () => {
   it('should suggest only suggestions', () => {

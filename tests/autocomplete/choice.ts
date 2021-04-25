@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { choice } from '../../src/autocomplete'
+import choice from '../../src/autocomplete/choice'
 
 describe('choice', () => {
   it('should raise an error without params', () => {

@@ -1,6 +1,9 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { plural, digits, seq, opt } from '../../src/autocomplete'
+import plural from '../../src/autocomplete/plural'
+import digits from '../../src/autocomplete/digits'
+import seq from '../../src/autocomplete/seq'
+import opt from '../../src/autocomplete/opt'
 
 describe('seq', () => {
   it('should do nothing without suggestors', () => {

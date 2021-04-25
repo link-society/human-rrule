@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { same } from '../../src/autocomplete'
+import same from '../../src/autocomplete/same'
 
 describe('same', () => {
   it('should suggest entire same with empty expression', () => {

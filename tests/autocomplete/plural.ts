@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { plural } from '../../src/autocomplete'
+import plural from '../../src/autocomplete/plural'
 
 describe('plural', () => {
   it('should suggest both singular and plural forms', () => {

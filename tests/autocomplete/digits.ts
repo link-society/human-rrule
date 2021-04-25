@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { digits } from '../../src/autocomplete'
+import digits from '../../src/autocomplete/digits'
 
 describe('digits', () => {
   it('should return an error without digits', () => {

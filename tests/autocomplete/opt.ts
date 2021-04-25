@@ -1,6 +1,6 @@
 import { describe, it } from 'mocha'
 import assert from 'assert'
-import { opt } from '../../src/autocomplete'
+import opt from '../../src/autocomplete/opt'
 
 describe('opt', () => {
   it('should not suggest errored token', () => {
