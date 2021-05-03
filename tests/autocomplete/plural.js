@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import plural from '../../src/autocomplete/plural'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const plural = require('../../src/autocomplete/plural').default
 
 describe('plural', () => {
   it('should suggest both singular and plural forms', () => {

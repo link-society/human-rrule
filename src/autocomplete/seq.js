@@ -1,16 +1,10 @@
-import Token, {
-  Suggestor, SuggestResult
-} from './token'
+const { findFinished, incCount } = require('./utils')
 
-import { findFinished, incCount } from './utils'
+const { toSuggestors } = require('./same')
 
-import { toSuggestors } from './same'
-
-const seq = (...tokens: readonly Token[]): Suggestor =>
-  (...exps: string[]): readonly SuggestResult[] => {
+const seq = (...tokens) =>
+  (...exps) => {
     const suggestors = toSuggestors(...tokens)
-
-    const expsLength = exps.length
 
     const [suggestor, ...nextSuggestors] = suggestors
 
@@ -40,4 +34,6 @@ const seq = (...tokens: readonly Token[]): Suggestor =>
     return []
   }
 
-export default seq
+module.exports = {
+  default: seq
+}

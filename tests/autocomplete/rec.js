@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import rec from '../../src/autocomplete/rec'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const rec = require('../../src/autocomplete/rec').default
 
 describe('rec', () => {
   it('should not suggest anything without params', () => {

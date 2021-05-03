@@ -9,8 +9,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint src/",
-    "test": "npm run build && cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' c8 -n src -r html -r text mocha -r ts-node/register 'tests/**/*.ts' 'tests/**/*.js'",
-    "build": "tsc"
+    "test": "c8 -n src -r html -r text mocha 'tests/**/*.js'"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

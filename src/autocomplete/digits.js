@@ -1,23 +1,21 @@
-import { SuggestResult, Suggestor } from './token'
+const { errorResult, countResult } = require('./utils')
 
-import { errorResult, countResult } from './utils'
+const same = require('./same').default
 
-import same from './same'
-
-export default (maxValue?: number, suffix?: string): Suggestor =>
-  (...exps: readonly string[]): readonly SuggestResult[] => {
+const digits = (maxValue, suffix) =>
+  (...exps) => {
     const [exp] = exps
 
-    const digitsRegexp = /(?<digits>\d+)(?<expSuffix>.*)/
+    const digitsRegexp = /(?<expDigits>\d+)(?<expSuffix>.*)/u
     const matched = exp.match(digitsRegexp)
 
-    if (matched === null || matched.groups === undefined || !matched.groups.digits) {
+    if (matched === null || matched.groups === null || !matched.groups.expDigits) {
       return errorResult(`Digits expected. ${exp} found`)
     }
 
-    const { digits, expSuffix } = matched.groups
+    const { expDigits, expSuffix } = matched.groups
 
-    const value = parseInt(digits, 10)
+    const value = parseInt(expDigits, 10)
 
     if (isNaN(value)) {
       return errorResult(`Digits %d${suffix} expected. Found ${exp}`)
@@ -35,3 +33,7 @@ export default (maxValue?: number, suffix?: string): Suggestor =>
 
     return countResult(1)
   }
+
+module.exports = {
+  default: digits
+}

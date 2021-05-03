@@ -1,12 +1,12 @@
-import choice from './choice'
-import seq from './seq'
-import same from './same'
-import opt from './opt'
-import digits from './digits'
-import rec from './rec'
-import plural from './plural'
+const choice = require('./choice').default
+const seq = require('./seq').default
+const same = require('./same').default
+const opt = require('./opt').default
+const digits = require('./digits').default
+const rec = require('./rec').default
+const plural = require('./plural').default
 
-export const durations = choice(...[
+const durations = choice(...[
   'second',
   'minute',
   'hour',
@@ -16,13 +16,13 @@ export const durations = choice(...[
   'year'
 ].map(plural))
 
-export const count = seq(
+const count = seq(
   same('for'),
   digits(),
   plural('time')
 )
 
-export const time = seq(
+const time = seq(
   opt(
     digits(2, 'h')
   ),
@@ -34,7 +34,7 @@ export const time = seq(
   )
 )
 
-export const until = seq(
+const until = seq(
   same('until'),
   same('month'),
   digits(0, ','),
@@ -47,9 +47,9 @@ export const until = seq(
   )
 )
 
-export const and = choice(same(','), same('and'))
+const and = choice(same(','), same('and'))
 
-export const byTime = seq(
+const byTime = seq(
   same('at'),
   time,
   opt(
@@ -60,19 +60,19 @@ export const byTime = seq(
   )
 )
 
-export const ext = choice(
+const ext = choice(
   same('st'),
   same('nd'),
   same('rd'),
   same('th')
 )
 
-export const weekNo = seq(
+const weekNo = seq(
   digits(),
   ext
 )
 
-export const byWeekNo = seq(
+const byWeekNo = seq(
   same('on'),
   same('the'),
   weekNo,
@@ -84,12 +84,12 @@ export const byWeekNo = seq(
   )
 )
 
-export const yearDay = seq(
+const yearDay = seq(
   digits(),
   ext
 )
 
-export const ByYearDay = seq(
+const ByYearDay = seq(
   same('on'),
   same('the'),
   yearDay,
@@ -101,12 +101,12 @@ export const ByYearDay = seq(
   )
 )
 
-export const monthDay = seq(
+const monthDay = seq(
   digits(),
   ext
 )
 
-export const byMonthDay = seq(
+const byMonthDay = seq(
   same('the'),
   monthDay,
   opt(
@@ -117,7 +117,7 @@ export const byMonthDay = seq(
   )
 )
 
-export const month = choice(...[
+const month = choice(...[
   'january',
   'february',
   'mars',
@@ -132,7 +132,7 @@ export const month = choice(...[
   'december'
 ].map(same))
 
-export const byMonth = seq(
+const byMonth = seq(
   same('in'),
   month,
   opt(
@@ -143,7 +143,7 @@ export const byMonth = seq(
   )
 )
 
-export const day = choice(...[
+const day = choice(...[
   'monday',
   'tuesday',
   'wednesday',
@@ -153,7 +153,7 @@ export const day = choice(...[
   'sunday'
 ].map(same))
 
-export const byWeekDay = seq(
+const byWeekDay = seq(
   same('on'),
   day,
   opt(
@@ -164,7 +164,7 @@ export const byWeekDay = seq(
   )
 )
 
-export const weekStart = seq(
+const weekStart = seq(
   same('starting'),
   same('the'),
   same('week'),
@@ -172,13 +172,13 @@ export const weekStart = seq(
   day
 )
 
-export const freq = seq(
+const freq = seq(
   same('every'),
   opt(digits()),
   durations
 )
 
-export default seq(
+const hrrule = seq(
   freq,
   opt(weekStart),
   opt(byWeekDay),
@@ -190,3 +190,27 @@ export default seq(
   opt(until),
   opt(count)
 )
+
+
+module.exports = {
+  durations,
+  count,
+  time,
+  until,
+  and,
+  byTime,
+  ext,
+  weekNo,
+  byWeekNo,
+  yearDay,
+  ByYearDay,
+  monthDay,
+  byMonthDay,
+  month,
+  byMonth,
+  day,
+  byWeekDay,
+  weekStart,
+  freq,
+  default: hrrule
+}

@@ -1,9 +1,9 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import plural from '../../src/autocomplete/plural'
-import digits from '../../src/autocomplete/digits'
-import seq from '../../src/autocomplete/seq'
-import opt from '../../src/autocomplete/opt'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const plural = require('../../src/autocomplete/plural').default
+const digits = require('../../src/autocomplete/digits').default
+const seq = require('../../src/autocomplete/seq').default
+const opt = require('../../src/autocomplete/opt').default
 
 describe('seq', () => {
   it('should do nothing without suggestors', () => {

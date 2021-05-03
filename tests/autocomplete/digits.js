@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import digits from '../../src/autocomplete/digits'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const digits = require('../../src/autocomplete/digits').default
 
 describe('digits', () => {
   it('should return an error without digits', () => {

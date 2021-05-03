@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import same from '../../src/autocomplete/same'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const same = require('../../src/autocomplete/same').default
 
 describe('same', () => {
   it('should suggest entire same with empty expression', () => {

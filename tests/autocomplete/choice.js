@@ -1,6 +1,6 @@
-import { describe, it } from 'mocha'
-import assert from 'assert'
-import choice from '../../src/autocomplete/choice'
+const { describe, it } = require('mocha')
+const assert = require('assert')
+const choice = require('../../src/autocomplete/choice').default
 
 describe('choice', () => {
   it('should raise an error without params', () => {
