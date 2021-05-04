@@ -1,7 +1,4 @@
 {
-  "plugins": [
-    "@babel"
-  ],
   "env": {
       "commonjs": true,
       "es6": true,
@@ -16,7 +13,6 @@
       "requireConfigFile": false,
       "ecmaVersion": 2018
   },
-  "parser": "@babel/eslint-parser",
   "rules": {
       "accessor-pairs": "error",
       "array-bracket-newline": "off",
