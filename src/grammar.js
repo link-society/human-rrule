@@ -29,7 +29,7 @@ const day = oneOf(
 const month = oneOf(
   makeRule(regex(/january/ui)),
   makeRule(regex(/february/ui)),
-  makeRule(regex(/mars/ui)),
+  makeRule(regex(/march/ui)),
   makeRule(regex(/april/ui)),
   makeRule(regex(/may/ui)),
   makeRule(regex(/june/ui)),
